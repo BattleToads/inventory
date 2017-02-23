@@ -8,6 +8,6 @@
 
 <h4>Vendors</h4>
 <ul ng-repeat="v in vm.vendors">
-  <li>{{v.name}}</li>
+  <li>{{v.name}} | <a ui-sref="editVendor({id:v._id})">Edit</a> </li>
 </ul>
 <a href="/newVendor">New Vendor</a>

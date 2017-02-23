@@ -38,10 +38,10 @@ var inventory;
             controller: inventory.Controllers.NewVendorController,
             controllerAs: 'vm'
         })
-            .state('test', {
-            url: '/test',
-            templateUrl: '/ngApp/views/test.html',
-            controller: inventory.Controllers.TestController,
+            .state('editVendor', {
+            url: '/editVendor/:id',
+            templateUrl: '/ngApp/views/editVendor.html',
+            controller: inventory.Controllers.EditVendorController,
             controllerAs: 'vm'
         })
             .state('notFound', {

@@ -1,14 +1,19 @@
+var payload;
+var token = window.localStorage['token'];
+payload = JSON.parse(window.atob(token.split('.')[1]));
 var inventory;
 (function (inventory) {
     var Controllers;
     (function (Controllers) {
         var HomeController = (function () {
-            function HomeController(itemService, $window, $state, $location) {
+            function HomeController(itemService, vendorService, $window, $state, $location) {
                 this.itemService = itemService;
+                this.vendorService = vendorService;
                 this.$window = $window;
                 this.$state = $state;
                 this.$location = $location;
-                this.items = this.itemService.list();
+                this.items = this.itemService.list(payload.id);
+                this.vendors = this.vendorService.list();
             }
             HomeController.prototype.deleteItem = function (id) {
                 var _this = this;
@@ -23,9 +28,11 @@ var inventory;
             function NewItemController(itemService, $state) {
                 this.itemService = itemService;
                 this.$state = $state;
+                console.log(payload);
             }
             NewItemController.prototype.saveItem = function () {
                 var _this = this;
+                this.item.owner_Id = payload.id;
                 this.itemService.saveItem(this.item).then(function () {
                     _this.$state.go('home');
                 });
@@ -59,7 +66,6 @@ var inventory;
             }
             NewVendorController.prototype.saveVendor = function () {
                 var _this = this;
-                alert("Hit");
                 this.vendorService.saveVendor(this.vendor).then(function () {
                     _this.$state.go('home');
                 });
@@ -67,6 +73,25 @@ var inventory;
             return NewVendorController;
         }());
         Controllers.NewVendorController = NewVendorController;
+        var EditVendorController = (function () {
+            function EditVendorController(vendorService, $state, $stateParams) {
+                this.vendorService = vendorService;
+                this.$state = $state;
+                this.$stateParams = $stateParams;
+                if ($stateParams) {
+                    this.id = $stateParams['id'];
+                }
+            }
+            EditVendorController.prototype.editVendor = function () {
+                var _this = this;
+                this.vendor._id = this.id;
+                this.vendorService.saveVendor(this.vendor).then(function () {
+                    _this.$state.go('home');
+                });
+            };
+            return EditVendorController;
+        }());
+        Controllers.EditVendorController = EditVendorController;
         var LoginController = (function () {
             function LoginController(userService, $window, $state) {
                 this.userService = userService;

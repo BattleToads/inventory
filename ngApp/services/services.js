@@ -6,11 +6,8 @@ var inventory;
             function ItemService($resource) {
                 this.ItemResource = $resource('/api/items/:id');
             }
-            ItemService.prototype.get = function (id) {
-                return this.ItemResource.get({ id: id });
-            };
-            ItemService.prototype.list = function () {
-                return this.ItemResource.query();
+            ItemService.prototype.list = function (id) {
+                return this.ItemResource.query({ id: id });
             };
             ItemService.prototype.saveItem = function (item) {
                 return this.ItemResource.save({ id: item._id }, item).$promise;
@@ -26,9 +23,6 @@ var inventory;
             function VendorService($resource) {
                 this.VendorResource = $resource('/api/vendors/:id');
             }
-            VendorService.prototype.get = function (id) {
-                return this.VendorResource.get({ id: id });
-            };
             VendorService.prototype.list = function () {
                 return this.VendorResource.query();
             };

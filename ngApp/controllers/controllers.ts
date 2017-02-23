@@ -1,7 +1,11 @@
+let payload;
+let token = window.localStorage['token'];
+payload = JSON.parse(window.atob(token.split('.')[1]));
 namespace inventory.Controllers {
 
     export class HomeController {
       public items;
+      public vendors;
 
       public deleteItem(id) {
         this.itemService.deleteItem(id).then(() => {
@@ -10,12 +14,14 @@ namespace inventory.Controllers {
       }
       constructor(
         private itemService: inventory.Services.ItemService,
+        private vendorService: inventory.Services.VendorService,
         public $window,
         public $state,
         public $location
       )
       {
-        this.items = this.itemService.list();
+        this.items = this.itemService.list(payload.id);
+        this.vendors = this.vendorService.list();
       }
     }
 
@@ -23,6 +29,7 @@ namespace inventory.Controllers {
       public item;
 
       public saveItem() {
+        this.item.owner_Id = payload.id;
         this.itemService.saveItem(this.item).then(() => {
           this.$state.go('home');
         })
@@ -30,10 +37,12 @@ namespace inventory.Controllers {
 
       constructor(
         private itemService: inventory.Services.ItemService,
-        public $state
+        public $state,
+
       )
       {
 
+        console.log(payload);
       }
     }
 
@@ -63,7 +72,6 @@ namespace inventory.Controllers {
       public vendor;
 
       public saveVendor() {
-        alert("Hit");
         this.vendorService.saveVendor(this.vendor).then(() => {
           this.$state.go('home');
         })
@@ -75,6 +83,28 @@ namespace inventory.Controllers {
       )
       {
 
+      }
+    }
+
+    export class EditVendorController {
+      public vendor;
+      public id;
+
+      public editVendor() {
+        this.vendor._id = this.id;
+        this.vendorService.saveVendor(this.vendor).then(() => {
+          this.$state.go('home');
+        })
+      }
+      constructor(
+        private vendorService: inventory.Services.VendorService,
+        public $state,
+        public $stateParams
+      )
+      {
+        if($stateParams) {
+          this.id = $stateParams['id'];
+        }
       }
     }
 

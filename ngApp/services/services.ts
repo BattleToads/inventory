@@ -2,16 +2,13 @@ namespace inventory.Services {
   export class ItemService {
     private ItemResource;
 
-    public get(id) {
-      return this.ItemResource.get({id:id});
-    }
 
-    public list() {
-      return this.ItemResource.query();
+    public list(id) {
+      return this.ItemResource.query({id:id});
     }
 
     public saveItem(item) {
-      return this.ItemResource.save({id: item._id}, item).$promise;
+      return this.ItemResource.save({id:item._id}, item).$promise;
     }
 
     public deleteItem(itemId) {
@@ -27,10 +24,6 @@ namespace inventory.Services {
 
   export class VendorService {
     private VendorResource;
-
-    public get(id) {
-      return this.VendorResource.get({id:id});
-    }
 
     public list() {
       return this.VendorResource.query();

@@ -2,8 +2,8 @@
 var express = require("express");
 var item_1 = require("../models/item");
 var router = express.Router();
-router.get('/', function (req, res) {
-    item_1.default.find().then(function (items) {
+router.get('/:id', function (req, res) {
+    item_1.default.find({ owner_Id: req.params["id"] }).then(function (items) {
         res.json(items);
     });
 });
@@ -12,6 +12,7 @@ router.post('/', function (req, res) {
     item.name = req.body.name;
     item.purchasePrice = req.body.purchasePrice;
     item.salePrice = req.body.salePrice;
+    item.owner_Id = req.body.owner_Id;
     item.save().then(function (newItem) {
         res.json(newItem);
     });
