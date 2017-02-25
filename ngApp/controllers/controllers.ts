@@ -52,6 +52,7 @@ namespace inventory.Controllers {
 
       public editItem() {
         this.item._id = this.id;
+        this.item.owner_Id = payload.id;
         this.itemService.saveItem(this.item).then(() => {
           this.$state.go('home');
         })

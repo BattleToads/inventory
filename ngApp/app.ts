@@ -37,8 +37,6 @@ namespace inventory {
                 controller: inventory.Controllers.EditItemController,
                 controllerAs: 'vm'
               })
-              
-
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'

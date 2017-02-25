@@ -50,6 +50,7 @@ var inventory;
             EditItemController.prototype.editItem = function () {
                 var _this = this;
                 this.item._id = this.id;
+                this.item.owner_Id = payload.id;
                 this.itemService.saveItem(this.item).then(function () {
                     _this.$state.go('home');
                 });
