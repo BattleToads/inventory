@@ -22,27 +22,7 @@ namespace inventory.Services {
 
   angular.module('inventory').service('itemService', ItemService);
 
-  export class VendorService {
-    private VendorResource;
 
-    public list() {
-      return this.VendorResource.query();
-    }
-
-    public saveVendor(vendor) {
-      return this.VendorResource.save({id: vendor._id}, vendor).$promise;
-    }
-
-    public deleteVendor(vendorId) {
-      return this.VendorResource.remove({id:vendorId}).$promise;
-    }
-
-    constructor($resource:ng.resource.IResourceService) {
-      this.VendorResource = $resource('/api/vendors/:id');
-    }
-    }
-
-    angular.module('inventory').service('vendorService', VendorService);
 
     export class UserService {
       public LoginResource

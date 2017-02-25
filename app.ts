@@ -13,7 +13,7 @@ import users from './routes/users';
 require('./models/user');
 require('./config/passport');
 import items from './api/items';
-import vendors from './api/vandors';
+
 
 
 let app = express();
@@ -34,7 +34,7 @@ app.use('/ngApp', express.static(path.join(__dirname, 'ngApp')));
 app.use('/api', express.static(path.join(__dirname, 'api')));
 app.use(passport.initialize());
 app.use('/api/items', items);
-app.use('/api/vendors', vendors);
+
 
 mongoose.connect('mongodb://mongo:secret@ds111489.mlab.com:11489/inventory');
 
