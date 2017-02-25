@@ -120,20 +120,5 @@ var inventory;
             return RegisterController;
         }());
         Controllers.RegisterController = RegisterController;
-        var TestController = (function () {
-            function TestController(vendorService, $state) {
-                this.vendorService = vendorService;
-                this.$state = $state;
-            }
-            TestController.prototype.saveVendor = function () {
-                var _this = this;
-                alert("Hit");
-                this.vendorService.saveVendor(this.vendor).then(function () {
-                    _this.$state.go('home');
-                });
-            };
-            return TestController;
-        }());
-        Controllers.TestController = TestController;
     })(Controllers = inventory.Controllers || (inventory.Controllers = {}));
 })(inventory || (inventory = {}));

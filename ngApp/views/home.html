@@ -1,13 +1,29 @@
+
+<div class="container" style="padding:0px;margin:0px;">
+  <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="/home">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/newItem">New Item</a>
+  </li>
+</ul>
 <h4>Items</h4>
 
-
-<ul ng-repeat="i in vm.items">
-  <li>{{i.name}} | <a ui-sref="editItem({id:i._id})">Edit</a> | <a href="#" ng-click="vm.deleteItem(i._id)">Delete</a></li>
-</ul>
-<a href="/newItem">New Item</a>
-
-<h4>Vendors</h4>
-<ul ng-repeat="v in vm.vendors">
-  <li>{{v.name}} | <a ui-sref="editVendor({id:v._id})">Edit</a> </li>
-</ul>
-<a href="/newVendor">New Vendor</a>
+<table class="table table-bordered table-hover">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Name</th>
+      <th>Purchase Price</th>
+      <th>Sale Price</th>
+      <th>Edit / Delete</th>
+    </tr>
+  </thead>
+  <tr ng-repeat="i in vm.items | orderBy : 'name'">
+    <td>{{i.name}}</td>
+    <td>${{i.purchasePrice}}</td>
+    <td>${{i.salePrice}}</td>
+    <td><a ui-sref="editItem({id:i._id})">Edit</a> | <a href="#" ng-click="vm.deleteItem(i._id)">Delete</a></li></td>
+  </tr>
+</table>
+</div>

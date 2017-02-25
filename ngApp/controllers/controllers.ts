@@ -146,23 +146,23 @@ namespace inventory.Controllers {
 
       }
     }
-    export class TestController {
-      public vendor;
-
-      public saveVendor() {
-        alert("Hit");
-        this.vendorService.saveVendor(this.vendor).then(() => {
-          this.$state.go('home');
-        })
-      }
-
-      constructor(
-        private vendorService: inventory.Services.VendorService,
-        public $state
-      )
-      {
-
-      }
-    }
+    // export class TestController {
+    //   public vendor;
+    //
+    //   public saveVendor() {
+    //     alert("Hit");
+    //     this.vendorService.saveVendor(this.vendor).then(() => {
+    //       this.$state.go('home');
+    //     })
+    //   }
+    //
+    //   constructor(
+    //     private vendorService: inventory.Services.VendorService,
+    //     public $state
+    //   )
+    //   {
+    //
+    //   }
+    // }
 
 }
