@@ -1,7 +1,14 @@
-<h2>Login</h2>
-<input type="text" placeholder="username" ng-model="vm.userInfo.username"/>
-<input type="password" placeholder="password" ng-model="vm.userInfo.password"/>
-<button type="button" ng-click="vm.login()">Login</button>
+<form>
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input class="form-control" type="text" id="username" placeholder="Username" ng-model="vm.userInfo.username" />
+  </div>
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input class="form-control" type="password" id="password" placeholder="Password" ng-model="vm.userInfo.password" />
+  </div>
+  <button type="button" class="btn btn-primary" ng-click="vm.login()">Login</button>
+</form>
 <div style="padding-top: 25px;">
-  <a href="/register">New Account</a>
+  <p>Not Registered? <a href="/register">Signup now!</a></p>
 </div>

@@ -19,23 +19,6 @@ var inventory;
         }());
         Services.ItemService = ItemService;
         angular.module('inventory').service('itemService', ItemService);
-        var VendorService = (function () {
-            function VendorService($resource) {
-                this.VendorResource = $resource('/api/vendors/:id');
-            }
-            VendorService.prototype.list = function () {
-                return this.VendorResource.query();
-            };
-            VendorService.prototype.saveVendor = function (vendor) {
-                return this.VendorResource.save({ id: vendor._id }, vendor).$promise;
-            };
-            VendorService.prototype.deleteVendor = function (vendorId) {
-                return this.VendorResource.remove({ id: vendorId }).$promise;
-            };
-            return VendorService;
-        }());
-        Services.VendorService = VendorService;
-        angular.module('inventory').service('vendorService', VendorService);
         var UserService = (function () {
             function UserService($resource) {
                 this.$resource = $resource;

@@ -37,19 +37,6 @@ namespace inventory {
                 controller: inventory.Controllers.EditItemController,
                 controllerAs: 'vm'
               })
-              .state('newVendor', {
-                  url: '/newVendor',
-                  templateUrl: '/ngApp/views/newVendor.html',
-                  controller: inventory.Controllers.NewVendorController,
-                  controllerAs: 'vm'
-              })
-              .state('editVendor', {
-                  url: '/editVendor/:id',
-                  templateUrl: '/ngApp/views/editVendor.html',
-                  controller: inventory.Controllers.EditVendorController,
-                  controllerAs: 'vm'
-              })
-
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'
