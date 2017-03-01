@@ -1,4 +1,4 @@
-<div class="container" style="padding:0px;margin:0px;">
+<div>
   <ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link" href="/home">Home</a>
@@ -21,6 +21,8 @@
     <label for="salePrice">Sale Price:</label>
     <input class="form-control" type="text" id="salePrice" placeholder="Sale Price" ng-model="vm.item.salePrice" />
   </div>
-  <button class="btn btn-primary" ng-click="vm.saveItem()">Save</button>
+  <div class="text-center add-margin">
+    <button class="btn btn-primary btn-sm " ng-click="vm.saveItem()">Save</button>
+  </div>
 </form>
 </div>
