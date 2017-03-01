@@ -1,0 +1,43 @@
+body {
+  background-color: #ACADBC;
+  color: #102E4A;
+}
+a {
+  color: #2E0219;
+}
+a:hover
+{
+  color: #715AFF;
+}
+table {
+  background-color: #E1B07E;
+}
+.add-margin{
+  margin-bottom: 20px;
+}
+.container-bring-in {
+  padding: 0px;
+  margin: 0px;
+}
+.container {
+  background-color: #89DAFF;
+  /*border-bottom-left-radius:50px;
+  border-bottom-right-radius:50px;*/
+  border-radius: 50px;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #ACADBC;
+
+
+}
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
+  border:1px double black;
+}
+.nav-tabs > li > a:hover{
+  background-color: #E1B07E !important;
+}
